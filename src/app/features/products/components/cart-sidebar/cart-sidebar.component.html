@@ -1,0 +1,25 @@
+<div>
+    <div class="cart-list">
+        <h2>Summary</h2>
+        <app-cart-item-card *ngFor="let item of cart$ | async" [product]="productsMap[item.productId]"
+            [quantity]="item.quantity" (quantityChange)="onQuantityChange(item.productId, $event)"
+            (remove)="onRemoveItem(item.productId)">
+        </app-cart-item-card>
+
+    </div>
+    <div class="empty-cart" *ngIf="(cart$ | async) && (cart$ | async)?.length !== 0">
+        <button class="remove-btn" (click)="clearCart()">
+            Clear all items
+        </button>
+    </div>
+    <div class="cart-summary">
+        <div class="cart-total">
+            <span>Total:</span>
+            <span>{{ totalPrice | currency }}</span>
+        </div>
+        <button class="checkout-btn" [routerLink]="['/products/cart']"
+            [disabled]="!(cart$ | async) || (cart$ | async)?.length === 0">
+            Finalize Order
+        </button>
+    </div>
+</div>

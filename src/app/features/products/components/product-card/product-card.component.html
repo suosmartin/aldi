@@ -1,0 +1,20 @@
+<div *ngIf="product" class="product-card" [class.out-of-stock]="product | outOfStock">
+    <ng-container *ngIf="!imageError; else blankImage">
+        <img [src]="imgSrc" [alt]="product.name" class="product-image" (error)="onImgError()" />
+    </ng-container>
+    <ng-template #blankImage>
+        <div class="blank-image"> <span class="material-icons">
+                image_not_supported
+            </span>
+        </div>
+    </ng-template>
+    <div class="product-name">{{ product.name }}</div>
+    <div class="product-price">{{ product.price | currency }}</div>
+    <p>Available: {{ product.availableAmount }}</p>
+    <button class="add-to-cart-btn" (click)="openDetailsModal($event)" [disabled]="isDisabled(product) ">
+        <span class="material-icons">add_shopping_cart</span>
+    </button>
+    <div *ngIf="product | outOfStock" class="out-of-stock-overlay">
+        <span>Out of stock</span>
+    </div>
+</div>

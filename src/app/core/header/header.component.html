@@ -1,0 +1,4 @@
+<div class="header">
+    <a *ngFor="let menu of menus" [routerLink]="[menu.url]" [ngClass]="{'active': menu.active}"
+        class="header-btn">{{menu.label}} </a>
+</div>

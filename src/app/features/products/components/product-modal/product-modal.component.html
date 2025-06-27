@@ -1,0 +1,34 @@
+<div class="modal-backdrop" *ngIf="product">
+    <div class="modal">
+        <div class="modal-header">
+            <button class="close-btn" (click)="close.emit()" title="Close">
+                <span class="material-icons">close</span>
+            </button>
+            <h2 class="name">{{ product.name }}</h2>
+        </div>
+        <ng-container *ngIf="!imageError; else blankImage">
+            <img style="max-width:300px;" [src]="product.img" [alt]="product.name" (error)="onImgError()" />
+        </ng-container>
+        <ng-template #blankImage>
+            <div class="blank-image  cart-item-image">
+                <span class="material-icons">
+                    image_not_supported
+                </span>
+            </div>
+        </ng-template>
+        <p>Price: {{ product.price | currency }}</p>
+        <p>Available: {{ product.availableAmount }}</p>
+        <p>Min order: {{ product.minOrderAmount }}</p>
+
+        <div class="amount-input">
+            <label for="amount">Amount:</label>
+            <input id="amount" type="number" [min]="product.minOrderAmount" [max]="product.availableAmount"
+                [(ngModel)]="amount" (ngModelChange)="amountChange.emit($event)" />
+            <button class="add-to-cart-btn" (click)="onAdd()"
+                [disabled]="!amount || amount < product.minOrderAmount || amount > product.availableAmount">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+</div>

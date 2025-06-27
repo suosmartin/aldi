@@ -1,0 +1,66 @@
+@use "../../../../styles/variables.scss" as *;
+
+.cart-item-card {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background: $brand-yellow-shade;
+  margin-bottom: 0.5rem;
+  width: 240px;
+}
+
+.cart-item-image {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 0.75rem;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cart-item-name {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.cart-item-price {
+  font-size: 0.95rem;
+  color: #1976d2;
+}
+
+.cart-item-qty {
+  width: 60px;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.amount-input {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.img-small {
+  width: 2rem;
+  height: 2rem;
+}
+.blank-image {
+  background: #ebd384;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

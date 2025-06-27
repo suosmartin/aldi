@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+
+.header {
+  color: white;
+  background-color: black;
+  margin: 0;
+  padding: 0 20rem 0 20rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  .header-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: unset;
+
+    &:hover {
+      color: $brand-yellow;
+    }
+  }
+  .header-btn.active {
+    color: $brand-yellow;
+    text-decoration: underline;
+  }
+}
+@media (max-width: 900px) {
+  .header {
+    padding: 0 1rem;
+    justify-content: space-between;
+  }
+  .header-btn {
+    font-size: 1.2rem;
+  }
+}

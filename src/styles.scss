@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+button {
+  cursor: pointer;
+  background: black;
+  color: white;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  border: unset;
+  box-shadow: grey 0px 0px 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+button:hover {
+  background: rgb(243, 190, 91);
+}
+button:disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+.remove-btn {
+  background-color: rgb(247, 86, 37);
+}

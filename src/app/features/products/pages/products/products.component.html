@@ -1,0 +1,9 @@
+<app-product-modal *ngIf="selectedProduct" [product]="selectedProduct" [(amount)]="amount" (close)="closeModal()"
+    (add)="addToCart($event.product, $event.amount)">
+</app-product-modal>
+<div class="products-grid">
+    <div *ngIf="loading$ | async">Loading ...</div>
+    <app-product-card *ngFor="let product of products$ | async" [product]="product"
+        (showDetails)="openProductModal($event)">
+    </app-product-card>
+</div>

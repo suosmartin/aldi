@@ -1,0 +1,29 @@
+<div *ngIf="product" class="cart-item-card">
+    <ng-container *ngIf="!imageError; else blankImage">
+        <img class="cart-item-image" [src]="product.img" [alt]="product.name" (error)="onImgError()" />
+    </ng-container>
+    <ng-template #blankImage>
+        <div class="blank-image  cart-item-image">
+            <span class="material-icons">
+                image_not_supported
+            </span>
+        </div>
+    </ng-template>
+    <!-- <img [src]="product.img" [alt]="product.name" class="cart-item-image" /> -->
+    <div class="cart-item-info">
+        <div class="cart-item-name">{{ product.name }}</div>
+        <div class="cart-item-price">Unit: {{ product.price | currency }} * {{quantity}}</div>
+        <div class="cart-item-price">Total: {{ product.price*quantity | currency }}</div>
+        <div class="amount-input">
+            <input type="number" class="cart-item-qty" [min]="product.minOrderAmount"
+                [max]="product.availableAmount + quantity" [(ngModel)]="newQuantity" />
+            <button class="add-to-cart-btn" (click)="onQuantityChange($event)"
+                [disabled]="!newQuantity || newQuantity < product.minOrderAmount || newQuantity > product.availableAmount + quantity || newQuantity === quantity">
+                Modify
+            </button>
+        </div>
+    </div>
+    <button class="remove-btn" (click)="remove.emit(product.id)" title="Remove from cart">
+        <span class="material-icons">delete</span>
+    </button>
+</div>
